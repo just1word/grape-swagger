@@ -61,7 +61,7 @@ module Grape
           @target_class.combined_namespaces[endpoint.namespace.sub(/^\//, '')] = ns if ns
 
           combine_namespaces(endpoint.options[:app]) if endpoint.options[:app]
-        end
+        end if app.superclass != Grape::Middleware::Base # hot fix
       end
 
       def combine_namespace_routes(namespaces)
